@@ -1,0 +1,17 @@
+source leaprc.protein.ff14SB
+source leaprc.water.tip3p
+source leaprc.gaff
+loadAmberPrep ffncaa.in
+loadAmberPrep STP.prepin
+loadAmberPrep ast.in
+loadamberparams stp.frcmod
+loadamberparams NLE.frcmod
+mol = loadpdb ftsQ-B_stp_H_HIP.pdb
+bond mol.212.CB mol.228.C8
+bond mol.222.CB mol.228.C9
+check mol
+solvatebox mol TIP3PBOX 12
+addIons2 mol Cl- 0
+savepdb mol ftsQ-B_stp_leap.pdb
+saveamberparm mol ftsQ-B_stp.prmtop ftsQ-B_stp.inpcrd
+quit
